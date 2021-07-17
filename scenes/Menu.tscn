@@ -1,0 +1,188 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
+[ext_resource path="res://resources/styles/LineEdit.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/icons/blue_boxCross.png" type="Texture" id=3]
+[ext_resource path="res://resources/styles/MainPanel.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/bitmap.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="New" type="Button" parent="."]
+anchor_left = 0.265
+anchor_top = 0.093
+anchor_right = 0.265
+anchor_bottom = 0.093
+margin_left = 51.64
+margin_top = 0.199997
+margin_right = 239.64
+margin_bottom = 48.2
+text = "New Board"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Load" type="Button" parent="."]
+anchor_left = 0.265
+anchor_top = 0.093
+anchor_right = 0.265
+anchor_bottom = 0.093
+margin_left = 51.64
+margin_top = 72.2
+margin_right = 239.64
+margin_bottom = 120.2
+disabled = true
+text = "Load"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_left = 0.0268516
+anchor_right = 0.264484
+anchor_bottom = 0.747
+margin_left = 0.503983
+margin_top = 56.0
+margin_right = 0.167984
+margin_bottom = -0.200043
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ItemList" type="ItemList" parent="ScrollContainer"]
+margin_right = 243.0
+margin_bottom = 392.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/cursor = SubResource( 1 )
+custom_styles/selected_focus = SubResource( 2 )
+custom_styles/bg_focus = SubResource( 3 )
+custom_styles/cursor_unfocused = SubResource( 4 )
+custom_styles/selected = ExtResource( 2 )
+custom_styles/bg = ExtResource( 4 )
+custom_colors/font_color_selected = Color( 0.117647, 0.654902, 0.882353, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="NewBoardPop" type="Panel" parent="."]
+visible = false
+anchor_left = 0.315
+anchor_top = 0.213
+anchor_right = 0.657
+anchor_bottom = 0.497
+margin_left = 0.439972
+margin_top = 0.199989
+margin_right = 0.231995
+margin_bottom = -0.200012
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="NewBoardPop"]
+anchor_top = 0.493
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 5.4126
+margin_top = -26.5433
+margin_right = -4.58701
+margin_bottom = 25.267
+custom_styles/normal = ExtResource( 2 )
+placeholder_text = "Enter workspace name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NewBoardPop"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -138.348
+margin_top = 9.77977
+margin_right = 140.652
+margin_bottom = 40.7798
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Create new workspace"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="TextureButton" parent="NewBoardPop"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -26.866
+margin_top = 5.98785
+margin_right = -6.866
+margin_bottom = 25.9879
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Create" type="Button" parent="NewBoardPop"]
+anchor_left = 0.475
+anchor_top = 1.005
+anchor_right = 0.475
+anchor_bottom = 1.005
+margin_left = -58.393
+margin_top = -54.993
+margin_right = 56.607
+margin_bottom = -6.99301
+text = "Create"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.0288047
+anchor_right = 0.0288047
+margin_left = -1.49602
+margin_top = 20.0
+margin_right = 411.504
+margin_bottom = 56.0
+text = "Saved workspaces:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_top = 0.717
+anchor_right = 0.168
+anchor_bottom = 1.0
+margin_top = -3.20001
+margin_right = -0.0320129
+margin_bottom = -1.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="New" to="." method="_on_New_pressed"]
+[connection signal="pressed" from="Load" to="." method="_on_Load_pressed"]
+[connection signal="item_selected" from="ScrollContainer/ItemList" to="." method="_on_ItemList_item_selected"]
+[connection signal="nothing_selected" from="ScrollContainer/ItemList" to="." method="_on_ItemList_nothing_selected"]
+[connection signal="pressed" from="NewBoardPop/Close" to="." method="_on_Close_pressed"]
+[connection signal="pressed" from="NewBoardPop/Create" to="." method="_on_Create_pressed"]

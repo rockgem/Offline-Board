@@ -1,0 +1,110 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/Board.gd" type="Script" id=1]
+[ext_resource path="res://resources/styles/LineEdit.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/icons/blue_circle_plus.png" type="Texture" id=3]
+[ext_resource path="res://scripts/ScrollContainer.gd" type="Script" id=4]
+[ext_resource path="res://scripts/BoardName.gd" type="Script" id=5]
+[ext_resource path="res://resources/styles/FontBold.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/icons/blue_boxCross.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="Board" type="Panel" groups=[
+"BoardGroup",
+]]
+margin_right = 456.0
+margin_bottom = 580.0
+rect_min_size = Vector2( 456, 580 )
+mouse_default_cursor_shape = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BoardName" type="LineEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.127
+margin_left = 13.0
+margin_top = 8.0
+margin_right = -14.0
+margin_bottom = -7.15
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 6 )
+align = 1
+placeholder_text = "Board Name"
+placeholder_alpha = 0.105
+caret_blink = true
+caret_blink_speed = 0.5
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Add" type="TextureButton" parent="."]
+anchor_top = 0.171
+anchor_bottom = 0.171
+margin_left = 13.0
+margin_top = 29.3475
+margin_right = 33.0
+margin_bottom = 49.347
+hint_tooltip = "Add new task"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Delete" type="TextureButton" parent="."]
+anchor_top = 0.171
+anchor_bottom = 0.171
+margin_left = 13.0
+margin_top = -0.0271683
+margin_right = 33.0
+margin_bottom = 19.9728
+hint_tooltip = "Delete this board"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 0.24
+anchor_bottom = 0.24
+margin_left = 32.7298
+margin_top = -17.1079
+margin_right = 118.73
+margin_bottom = 18.8922
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Tasks:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_top = 0.333
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 13.0
+margin_top = 0.149994
+margin_right = -11.0
+margin_bottom = -11.0
+scroll_horizontal_enabled = false
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+custom_constants/vseparation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="text_changed" from="BoardName" to="." method="_on_BoardName_text_changed"]
+[connection signal="pressed" from="Add" to="." method="_on_Add_pressed"]
+[connection signal="pressed" from="Delete" to="." method="_on_Delete_pressed"]

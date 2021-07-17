@@ -1,0 +1,66 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Resource",
+"class": "Board",
+"language": "GDScript",
+"path": "res://resources/data/Board.gd"
+}, {
+"base": "Resource",
+"class": "Milestone",
+"language": "GDScript",
+"path": "res://resources/data/Milestone.gd"
+}, {
+"base": "Resource",
+"class": "Savefile",
+"language": "GDScript",
+"path": "res://resources/data/Savefile.gd"
+}, {
+"base": "Resource",
+"class": "Task",
+"language": "GDScript",
+"path": "res://resources/data/Task.gd"
+} ]
+_global_script_class_icons={
+"Board": "",
+"Milestone": "",
+"Savefile": "",
+"Task": ""
+}
+
+[application]
+
+config/name="Offline Board"
+config/description="An offline alternative for Trello Board. Keep your plans organized with Offline Board."
+run/main_scene="res://scenes/Menu.tscn"
+config/icon="res://assets/icons/bitmap.png"
+config/windows_native_icon="res://assets/icons/bitmap.ico"
+
+[autoload]
+
+DataManager="*res://scripts/globals/DataManager.gd"
+
+[display]
+
+window/dpi/allow_hidpi=true
+
+[gui]
+
+theme/custom="res://resources/styles/Theme.tres"
+theme/custom_font="res://resources/styles/Font.tres"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

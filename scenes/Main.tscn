@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/MainContainer.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Main.gd" type="Script" id=2]
+[ext_resource path="res://actors/Board.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/styles/ButtonYellowHover.tres" type="StyleBox" id=4]
+[ext_resource path="res://actors/MilestonePanel.tscn" type="PackedScene" id=5]
+
+[node name="Main" type="Control" groups=[
+"MainGroup",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddBoard" type="Button" parent="."]
+margin_left = 7.6546
+margin_top = 7.1091
+margin_right = 170.655
+margin_bottom = 55.1091
+custom_styles/hover = ExtResource( 4 )
+text = "Add Board"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -94.6547
+margin_top = 8.0
+margin_right = -6.65466
+margin_bottom = 56.0
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WorkspaceName" type="Label" parent="."]
+margin_left = 172.657
+margin_top = 14.0158
+margin_right = 765.662
+margin_bottom = 50.0158
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Workspace"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Board" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="MainContainer" type="ScrollContainer" parent="."]
+anchor_top = 0.205
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 11.0
+margin_top = -7.62939e-06
+margin_right = -12.0
+margin_bottom = -17.0
+scroll_vertical_enabled = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="MainContainer"]
+custom_constants/hseparation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MilestonePanel" parent="." instance=ExtResource( 5 )]
+visible = false
+margin_left = 330.0
+margin_top = 123.0
+margin_right = 710.0
+margin_bottom = 471.0
+
+[connection signal="pressed" from="AddBoard" to="." method="_on_AddBoard_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
